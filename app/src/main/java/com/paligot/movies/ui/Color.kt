@@ -1,0 +1,52 @@
+package com.paligot.movies.ui
+
+import androidx.compose.ui.graphics.Color
+
+val orange50 = Color(255, 248, 226)
+val orange100 = Color(255, 237, 182)
+val orange200 = Color(255, 226, 136)
+val orange300 = Color(255, 216, 89)
+val orange400 = Color(255, 205, 56)
+val orange500 = Color(255, 197, 39)
+val orange600 = Color(255, 181, 34)
+val orange700 = Color(255, 165, 31)
+val orange800 = Color(255, 150, 29)
+val orange900 = Color(255, 118, 26)
+
+val blue50 = Color(226, 242, 254)
+val blue100 = Color(183, 221, 254)
+val blue200 = Color(136, 201, 254)
+val blue300 = Color(83, 180, 254)
+val blue400 = Color(26, 163, 255)
+val blue500 = Color(0, 148, 254)
+val blue600 = Color(0, 132, 240)
+val blue700 = Color(0, 114, 221)
+val blue800 = Color(0, 98, 203)
+val blue900 = Color(0, 68, 171)
+
+val red50 = Color(255, 233, 236)
+val red100 = Color(255, 201, 206)
+val red200 = Color(248, 147, 145)
+val red300 = Color(241, 101, 101)
+val red400 = Color(250, 58, 61)
+val red500 = Color(255, 26, 26)
+val red600 = Color(240, 0, 28)
+val red700 = Color(223, 0, 22)
+val red800 = Color(210, 0, 14)
+val red900 = Color(197, 0, 0)
+
+val green50 = Color(234, 255, 232)
+val green100 = Color(203, 255, 197)
+val green200 = Color(163, 255, 158)
+val green300 = Color(110, 255, 110)
+val green400 = Color(26, 255, 64)
+val green500 = Color(0, 252, 0)
+val green600 = Color(0, 234, 0)
+val green700 = Color(0, 211, 0)
+val green800 = Color(0, 190, 0)
+val green900 = Color(0, 153, 0)
+val greenDark = Color(17, 26, 31)
+
+val grayDark = Color(45, 47, 49)
+
+val actorGradient = listOf(blue500, green500, orange500, red500)
