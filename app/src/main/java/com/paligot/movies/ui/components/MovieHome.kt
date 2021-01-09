@@ -2,20 +2,20 @@ package com.paligot.movies.ui.components
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.ScrollableColumn
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyRowForIndexed
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.ripple.RippleIndication
+import androidx.compose.material.Text
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.viewModel
-import androidx.ui.tooling.preview.Preview
 import com.paligot.movies.data.Movie
 import com.paligot.movies.data.MovieViewModel
 import com.paligot.movies.data.movies
@@ -92,7 +92,11 @@ fun HomeSection(
   onViewAllClick: (movieSection: MovieSection) -> Unit,
   onClick: (movie: Movie) -> Unit
 ) {
-  Box(modifier = modifier.fillMaxWidth().wrapContentHeight(align = Alignment.CenterVertically)) {
+  Box(
+    modifier = modifier
+      .fillMaxWidth()
+      .wrapContentHeight(align = Alignment.CenterVertically)
+  ) {
     Text(
       text = title,
       style = MaterialTheme.typography.subtitle1.copy(fontSize = 20.sp)
@@ -105,18 +109,20 @@ fun HomeSection(
         .fillMaxHeight()
         .clickable(
           onClick = { onViewAllClick(movieSection) },
-          indication = RippleIndication(bounded = false)
+          indication = rememberRipple(bounded = false)
         )
     )
   }
-  LazyRowForIndexed(items = movies) { index, it ->
-    Box(
-      modifier = Modifier.padding(
-        start = if (index == 0) 10.dp else 0.dp,
-        end = 5.dp, top = 5.dp, bottom = 5.dp
-      )
-    ) {
-      Poster(pictureUrl = it.pictureUrl, width = 120.dp, height = 180.dp) { onClick(it) }
+  LazyRow {
+    itemsIndexed(movies) { index, it ->
+      Box(
+        modifier = Modifier.padding(
+          start = if (index == 0) 10.dp else 0.dp,
+          end = 5.dp, top = 5.dp, bottom = 5.dp
+        )
+      ) {
+        Poster(pictureUrl = it.pictureUrl, width = 120.dp, height = 180.dp) { onClick(it) }
+      }
     }
   }
 }

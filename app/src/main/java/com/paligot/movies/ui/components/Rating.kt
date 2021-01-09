@@ -1,23 +1,23 @@
 package com.paligot.movies.ui.components
 
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.WithConstraints
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.platform.DensityAmbient
+import androidx.compose.ui.layout.WithConstraints
+import androidx.compose.ui.platform.AmbientDensity
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.ui.tooling.preview.Preview
 import com.paligot.movies.ui.green900
 import com.paligot.movies.ui.greenDark
 import com.paligot.movies.ui.orange900
@@ -29,8 +29,8 @@ fun Rating(
   modifier: Modifier = Modifier
 ) {
   WithConstraints {
-    val boxWidth = with(DensityAmbient.current) { constraints.maxWidth.toDp() }
-    val boxHeight = with(DensityAmbient.current) { constraints.maxHeight.toDp() }
+    val boxWidth = with(AmbientDensity.current) { constraints.maxWidth.toDp() }
+    val boxHeight = with(AmbientDensity.current) { constraints.maxHeight.toDp() }
     val largestSize = if (boxWidth.value > boxHeight.value) boxHeight else boxWidth
     Surface(
       modifier = modifier.preferredSize(largestSize),

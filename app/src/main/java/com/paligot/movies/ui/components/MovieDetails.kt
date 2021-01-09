@@ -4,29 +4,26 @@ import android.content.res.Configuration
 import androidx.compose.animation.animate
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.ScrollableRow
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyRowForIndexed
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.AmbientEmphasisLevels
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.ProvideEmphasis
-import androidx.compose.material.Surface
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Providers
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawOpacity
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Devices
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.viewModel
-import androidx.ui.tooling.preview.Devices
-import androidx.ui.tooling.preview.Preview
 import com.paligot.movies.data.Movie
 import com.paligot.movies.data.MovieDetail
 import com.paligot.movies.data.MovieViewModel
@@ -63,11 +60,17 @@ fun MovieDetails(
     val scrollState = rememberScrollState(0f)
     CoilImage(
       data = movie.backdrop,
-      modifier = Modifier.fillMaxWidth().height(backdropHeight),
+      modifier = Modifier
+        .fillMaxWidth()
+        .height(backdropHeight),
       contentScale = ContentScale.FillHeight
     )
     ScrollableColumn(scrollState = scrollState) {
-      Spacer(modifier = Modifier.height((backdropHeight - corner)).fillMaxWidth())
+      Spacer(
+        modifier = Modifier
+          .height((backdropHeight - corner))
+          .fillMaxWidth()
+      )
       Surface(
         shape = RoundedCornerShape(topLeft = corner, topRight = corner),
         elevation = 5.dp
@@ -115,7 +118,7 @@ fun MovieDetails(
         )
         .width(widthPosterSize)
         .aspectRatio(0.7f)
-        .drawOpacity(animate(opacity))
+        .alpha(animate(opacity))
     ) {
       PosterNoted(
         posterUrl = movie.poster,
@@ -187,18 +190,20 @@ private fun RecommendationSection(
     title = "Recommendations",
     modifier = Modifier.padding(start = startPaddingPoster, top = 20.dp)
   ) {
-    LazyRowForIndexed(items = movie.recommendations) { index, it ->
-      Box(
-        modifier = Modifier.padding(
-          start = if (index == 0) startPaddingPoster else 0.dp,
-          end = 5.dp, top = 5.dp, bottom = 5.dp
-        )
-      ) {
-        Poster(
-          pictureUrl = it.pictureUrl,
-          width = 120.dp,
-          height = 180.dp
-        ) { onClick(it) }
+    LazyRow {
+      itemsIndexed(movie.recommendations) { index, it ->
+        Box(
+          modifier = Modifier.padding(
+            start = if (index == 0) startPaddingPoster else 0.dp,
+            end = 5.dp, top = 5.dp, bottom = 5.dp
+          )
+        ) {
+          Poster(
+            pictureUrl = it.pictureUrl,
+            width = 120.dp,
+            height = 180.dp
+          ) { onClick(it) }
+        }
       }
     }
   }
@@ -214,18 +219,20 @@ private fun SimilarSection(
     title = "Similar",
     modifier = Modifier.padding(start = startPaddingPoster, top = 20.dp)
   ) {
-    LazyRowForIndexed(items = movie.similar) { index, it ->
-      Box(
-        modifier = Modifier.padding(
-          start = if (index == 0) startPaddingPoster else 0.dp,
-          end = 5.dp, top = 5.dp, bottom = 5.dp
-        )
-      ) {
-        Poster(
-          pictureUrl = it.pictureUrl,
-          width = 120.dp,
-          height = 180.dp
-        ) { onClick(it) }
+    LazyRow {
+      itemsIndexed(movie.similar) { index, it ->
+        Box(
+          modifier = Modifier.padding(
+            start = if (index == 0) startPaddingPoster else 0.dp,
+            end = 5.dp, top = 5.dp, bottom = 5.dp
+          )
+        ) {
+          Poster(
+            pictureUrl = it.pictureUrl,
+            width = 120.dp,
+            height = 180.dp
+          ) { onClick(it) }
+        }
       }
     }
   }
@@ -251,7 +258,7 @@ fun MovieMetadata(
         Tag(text = it)
       }
     }
-    ProvideEmphasis(emphasis = AmbientEmphasisLevels.current.medium) {
+    Providers(AmbientContentAlpha provides ContentAlpha.medium) {
       val year = releaseDate.formatDate().get(Calendar.YEAR)
       val time = "${runtime / 60}h ${runtime % 60}min"
       Text(
@@ -299,7 +306,7 @@ fun DetailSection(
   }
 }
 
-@Preview(device = Devices.PIXEL_4, showDecoration = true)
+@Preview(device = Devices.PIXEL_4, showSystemUi = true)
 @Composable
 fun MovieDetailsPreview() {
   ExploringMoviesTheme() {

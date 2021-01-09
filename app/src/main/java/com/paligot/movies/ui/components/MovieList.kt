@@ -3,16 +3,14 @@ package com.paligot.movies.ui.components
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.foundation.lazy.LazyColumnFor
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.viewModel
-import androidx.ui.tooling.preview.Preview
 import com.paligot.movies.data.Movie
 import com.paligot.movies.data.MovieViewModel
 import com.paligot.movies.data.movies
@@ -53,13 +51,19 @@ fun MovieList(
   switchDarkMode: () -> Unit = {},
   onClick: (movie: Movie) -> Unit
 ) {
-  MovieScaffold(title = title, isDarkModeActive = isDarkModeActive, switchDarkMode = switchDarkMode) {
-    LazyColumnFor(items = movies) {
-      MovieItem(
-        movie = it,
-        modifier = Modifier.padding(start = 10.dp, top = 10.dp, end = 10.dp),
-        onClick = onClick
-      )
+  MovieScaffold(
+    title = title,
+    isDarkModeActive = isDarkModeActive,
+    switchDarkMode = switchDarkMode
+  ) {
+    LazyColumn {
+      items(items = movies) {
+        MovieItem(
+          movie = it,
+          modifier = Modifier.padding(start = 10.dp, top = 10.dp, end = 10.dp),
+          onClick = onClick
+        )
+      }
     }
   }
 }

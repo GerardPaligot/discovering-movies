@@ -1,10 +1,9 @@
 package com.paligot.movies.ui.components
 
-import androidx.compose.foundation.Text
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.loadVectorResource
-import androidx.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 import com.paligot.movies.R
 import com.paligot.movies.ui.ExploringMoviesTheme
 
@@ -25,7 +24,7 @@ fun MovieScaffold(
             val imageId = if (isDarkModeActive) R.drawable.ic_sun else R.drawable.ic_moon
             val image = loadVectorResource(id = imageId)
             image.resource.resource?.let {
-              Icon(asset = it)
+              Icon(imageVector = it)
             }
           }
         }

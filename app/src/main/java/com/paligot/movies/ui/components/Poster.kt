@@ -5,16 +5,16 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material.ripple.RippleIndication
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.WithConstraints
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.DensityAmbient
+import androidx.compose.ui.layout.WithConstraints
+import androidx.compose.ui.platform.AmbientDensity
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import com.paligot.movies.data.joker
 import com.paligot.movies.extensions.opposite
 import com.paligot.movies.ui.ExploringMoviesTheme
@@ -35,7 +35,7 @@ fun Poster(
       .preferredHeight(height = height)
       .clickable(
         onClick = onClick,
-        indication = RippleIndication(color = MaterialTheme.colors.primary)
+        indication = rememberRipple(color = MaterialTheme.colors.primary)
       ),
     shape = MaterialTheme.shapes.large,
     elevation = elevation
@@ -57,8 +57,8 @@ fun PosterNoted(
   onClick: () -> Unit = {}
 ) {
   WithConstraints {
-    val boxWidth = with(DensityAmbient.current) { constraints.maxWidth.toDp() }
-    val boxHeight = with(DensityAmbient.current) { constraints.maxHeight.toDp() }
+    val boxWidth = with(AmbientDensity.current) { constraints.maxWidth.toDp() }
+    val boxHeight = with(AmbientDensity.current) { constraints.maxHeight.toDp() }
     Box(modifier = Modifier.fillMaxSize()) {
       Poster(
         pictureUrl = posterUrl,
