@@ -9,9 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
-import com.paligot.movies.data.joker
-import com.paligot.movies.ui.ExploringMoviesTheme
 
 @Composable
 fun Tag(
@@ -27,12 +24,4 @@ fun Tag(
       .border(1.dp, color, RoundedCornerShape(50))
       .padding(horizontal = 10.dp, vertical = 2.dp)
   )
-}
-
-@Preview
-@Composable
-fun TagPreview() {
-  ExploringMoviesTheme() {
-    Tag(text = joker.genres[0])
-  }
 }
