@@ -29,7 +29,7 @@ import com.paligot.movies.data.MovieDetail
 import com.paligot.movies.data.MovieViewModel
 import com.paligot.movies.data.joker
 import com.paligot.movies.extensions.formatDate
-import com.paligot.movies.ui.ExploringMoviesTheme
+import com.paligot.movies.theming.ExploringMoviesTheme
 import dev.chrisbanes.accompanist.coil.CoilImage
 import java.util.*
 

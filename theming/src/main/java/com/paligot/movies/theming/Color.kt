@@ -1,4 +1,4 @@
-package com.paligot.movies.ui
+package com.paligot.movies.theming
 
 import androidx.compose.ui.graphics.Color
 

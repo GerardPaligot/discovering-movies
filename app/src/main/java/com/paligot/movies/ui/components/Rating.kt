@@ -18,10 +18,10 @@ import androidx.compose.ui.platform.AmbientDensity
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.paligot.movies.ui.green900
-import com.paligot.movies.ui.greenDark
-import com.paligot.movies.ui.orange900
-import com.paligot.movies.ui.red900
+import com.paligot.movies.theming.green900
+import com.paligot.movies.theming.greenDark
+import com.paligot.movies.theming.orange900
+import com.paligot.movies.theming.red900
 
 @Composable
 fun Rating(

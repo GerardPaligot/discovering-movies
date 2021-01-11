@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
 import com.paligot.movies.data.Movie
 import com.paligot.movies.data.movies
-import com.paligot.movies.ui.ExploringMoviesTheme
+import com.paligot.movies.theming.ExploringMoviesTheme
 import kotlin.math.roundToInt
 
 @Composable

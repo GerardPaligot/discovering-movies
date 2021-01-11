@@ -19,7 +19,7 @@ import androidx.compose.ui.viewinterop.viewModel
 import com.paligot.movies.data.Movie
 import com.paligot.movies.data.MovieViewModel
 import com.paligot.movies.data.movies
-import com.paligot.movies.ui.ExploringMoviesTheme
+import com.paligot.movies.theming.ExploringMoviesTheme
 
 @Composable
 fun MovieHomeViewModel(

@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.loadVectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.paligot.movies.R
-import com.paligot.movies.ui.ExploringMoviesTheme
+import com.paligot.movies.theming.ExploringMoviesTheme
 
 @Composable
 fun MovieScaffold(

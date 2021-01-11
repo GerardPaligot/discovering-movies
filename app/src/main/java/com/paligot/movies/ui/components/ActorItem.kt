@@ -19,8 +19,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.paligot.movies.data.joker
-import com.paligot.movies.ui.ExploringMoviesTheme
-import com.paligot.movies.ui.actorGradient
+import com.paligot.movies.theming.ExploringMoviesTheme
+import com.paligot.movies.theming.actorGradient
 import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable

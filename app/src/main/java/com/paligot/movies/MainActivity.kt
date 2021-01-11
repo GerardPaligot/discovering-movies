@@ -10,7 +10,7 @@ import androidx.compose.ui.platform.setContent
 import com.paligot.movies.extensions.changeStatusBarColor
 import com.paligot.movies.extensions.legacy
 import com.paligot.movies.extensions.makeStatusBarTransparent
-import com.paligot.movies.ui.ExploringMoviesTheme
+import com.paligot.movies.theming.ExploringMoviesTheme
 import com.paligot.movies.ui.components.App
 
 class MainActivity : AppCompatActivity() {

@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.paligot.movies.data.joker
 import com.paligot.movies.extensions.opposite
-import com.paligot.movies.ui.ExploringMoviesTheme
+import com.paligot.movies.theming.ExploringMoviesTheme
 import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
