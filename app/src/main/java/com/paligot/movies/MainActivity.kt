@@ -1,12 +1,12 @@
 package com.paligot.movies
 
 import android.os.Bundle
+import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.platform.setContent
 import com.paligot.movies.extensions.changeStatusBarColor
 import com.paligot.movies.extensions.legacy
 import com.paligot.movies.extensions.makeStatusBarTransparent

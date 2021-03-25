@@ -13,15 +13,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.layout.WithConstraints
-import androidx.compose.ui.platform.AmbientDensity
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.google.accompanist.coil.CoilImage
 import com.paligot.movies.data.joker
 import com.paligot.movies.theming.ExploringMoviesTheme
 import com.paligot.movies.theming.actorGradient
-import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
 fun ActorItem(
@@ -33,13 +32,13 @@ fun ActorItem(
     horizontalAlignment = Alignment.CenterHorizontally,
     modifier = modifier
   ) {
-    WithConstraints {
-      val boxWidth = with(AmbientDensity.current) { constraints.maxWidth.toDp() }
-      val boxHeight = with(AmbientDensity.current) { constraints.maxHeight.toDp() }
+    BoxWithConstraints {
+      val boxWidth = with(LocalDensity.current) { constraints.maxWidth.toDp() }
+      val boxHeight = with(LocalDensity.current) { constraints.maxHeight.toDp() }
       val largestSize = if (boxWidth.value > boxHeight.value) boxHeight else boxWidth
       Surface(
         modifier = Modifier
-          .preferredSize(largestSize)
+          .size(largestSize)
           .border(
             shape = CircleShape,
             border = BorderStroke(
@@ -56,7 +55,8 @@ fun ActorItem(
         CoilImage(
           data = pictureUrl,
           modifier = Modifier.fillMaxSize(),
-          contentScale = ContentScale.Crop
+          contentScale = ContentScale.Crop,
+          contentDescription = null
         )
       }
     }
@@ -77,7 +77,7 @@ fun ActorItemPreview() {
       joker.actors[0].profilePath,
       modifier = Modifier
         .padding(5.dp)
-        .preferredWidth(100.dp)
+        .width(100.dp)
     )
   }
 }

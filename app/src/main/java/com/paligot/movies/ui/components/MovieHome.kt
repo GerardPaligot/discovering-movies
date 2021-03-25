@@ -1,21 +1,22 @@
 package com.paligot.movies.ui.components
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
-import androidx.compose.foundation.ScrollableColumn
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.viewinterop.viewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.paligot.movies.data.Movie
 import com.paligot.movies.data.MovieViewModel
 import com.paligot.movies.data.movies
@@ -54,7 +55,7 @@ fun MovieHome(
   onClick: (movie: Movie) -> Unit
 ) {
   MovieScaffold(isDarkModeActive = isDarkModeActive, switchDarkMode = switchDarkMode) {
-    ScrollableColumn {
+    Column(Modifier.verticalScroll(rememberScrollState())) {
       HomeSection(
         movieSection = MovieSection.UPCOMING,
         title = "Upcoming",
@@ -101,17 +102,16 @@ fun HomeSection(
       text = title,
       style = MaterialTheme.typography.subtitle1.copy(fontSize = 20.sp)
     )
-    Text(
-      text = "View all",
-      style = MaterialTheme.typography.overline,
-      modifier = Modifier
-        .align(alignment = Alignment.CenterEnd)
-        .fillMaxHeight()
-        .clickable(
-          onClick = { onViewAllClick(movieSection) },
-          indication = rememberRipple(bounded = false)
-        )
-    )
+    CompositionLocalProvider(LocalIndication provides rememberRipple(bounded = false)) {
+      Text(
+        text = "View all",
+        style = MaterialTheme.typography.overline,
+        modifier = Modifier
+          .align(alignment = Alignment.CenterEnd)
+          .fillMaxHeight()
+          .clickable(onClick = { onViewAllClick(movieSection) })
+      )
+    }
   }
   LazyRow {
     itemsIndexed(movies) { index, it ->
@@ -121,7 +121,14 @@ fun HomeSection(
           end = 5.dp, top = 5.dp, bottom = 5.dp
         )
       ) {
-        Poster(pictureUrl = it.pictureUrl, width = 120.dp, height = 180.dp) { onClick(it) }
+        CompositionLocalProvider(LocalIndication provides rememberRipple(color = MaterialTheme.colors.primary)) {
+          Poster(
+            pictureUrl = it.pictureUrl,
+            width = 120.dp,
+            height = 180.dp,
+            modifier = Modifier.clickable(onClick = { onClick(it) })
+          )
+        }
       }
     }
   }

@@ -1,16 +1,15 @@
 package com.paligot.movies.ui.components
 
 import android.content.res.Configuration
-import androidx.compose.animation.animate
-import androidx.compose.foundation.ScrollableColumn
-import androidx.compose.foundation.ScrollableRow
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.Providers
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -23,14 +22,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.viewinterop.viewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.google.accompanist.coil.CoilImage
 import com.paligot.movies.data.Movie
 import com.paligot.movies.data.MovieDetail
 import com.paligot.movies.data.MovieViewModel
 import com.paligot.movies.data.joker
 import com.paligot.movies.extensions.formatDate
 import com.paligot.movies.theming.ExploringMoviesTheme
-import dev.chrisbanes.accompanist.coil.CoilImage
 import java.util.*
 
 @Composable
@@ -57,22 +56,23 @@ fun MovieDetails(
   onClick: (movie: Movie) -> Unit
 ) {
   Box {
-    val scrollState = rememberScrollState(0f)
+    val scrollState = rememberScrollState(0)
     CoilImage(
       data = movie.backdrop,
       modifier = Modifier
         .fillMaxWidth()
         .height(backdropHeight),
-      contentScale = ContentScale.FillHeight
+      contentScale = ContentScale.FillHeight,
+      contentDescription = null
     )
-    ScrollableColumn(scrollState = scrollState) {
+    Column(Modifier.verticalScroll(scrollState)) {
       Spacer(
         modifier = Modifier
           .height((backdropHeight - corner))
           .fillMaxWidth()
       )
       Surface(
-        shape = RoundedCornerShape(topLeft = corner, topRight = corner),
+        shape = RoundedCornerShape(topStart = corner, topEnd = corner),
         elevation = 5.dp
       ) {
         Box(modifier = Modifier.fillMaxSize()) {
@@ -118,7 +118,7 @@ fun MovieDetails(
         )
         .width(widthPosterSize)
         .aspectRatio(0.7f)
-        .alpha(animate(opacity))
+        .alpha(opacity)
     ) {
       PosterNoted(
         posterUrl = movie.poster,
@@ -161,7 +161,7 @@ private fun ActorsSection(
       top = 20.dp
     )
   ) {
-    ScrollableRow {
+    Row(Modifier.horizontalScroll(rememberScrollState())) {
       movie.actors.forEachIndexed { index, it ->
         ActorItem(
           name = it.name,
@@ -173,7 +173,7 @@ private fun ActorsSection(
               end = 5.dp,
               start = if (index == 0) startPaddingPoster else 5.dp
             )
-            .preferredWidth(100.dp)
+            .width(100.dp)
         )
       }
     }
@@ -198,11 +198,14 @@ private fun RecommendationSection(
             end = 5.dp, top = 5.dp, bottom = 5.dp
           )
         ) {
-          Poster(
-            pictureUrl = it.pictureUrl,
-            width = 120.dp,
-            height = 180.dp
-          ) { onClick(it) }
+          CompositionLocalProvider(LocalIndication provides rememberRipple(color = MaterialTheme.colors.primary)) {
+            Poster(
+              pictureUrl = it.pictureUrl,
+              width = 120.dp,
+              height = 180.dp,
+              modifier = Modifier.clickable(onClick = { onClick(it) })
+            )
+          }
         }
       }
     }
@@ -227,11 +230,14 @@ private fun SimilarSection(
             end = 5.dp, top = 5.dp, bottom = 5.dp
           )
         ) {
-          Poster(
-            pictureUrl = it.pictureUrl,
-            width = 120.dp,
-            height = 180.dp
-          ) { onClick(it) }
+          CompositionLocalProvider(LocalIndication provides rememberRipple(color = MaterialTheme.colors.primary)) {
+            Poster(
+              pictureUrl = it.pictureUrl,
+              width = 120.dp,
+              height = 180.dp,
+              modifier = Modifier.clickable(onClick = { onClick(it) })
+            )
+          }
         }
       }
     }
@@ -258,7 +264,7 @@ fun MovieMetadata(
         Tag(text = it)
       }
     }
-    Providers(AmbientContentAlpha provides ContentAlpha.medium) {
+    CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
       val year = releaseDate.formatDate().get(Calendar.YEAR)
       val time = "${runtime / 60}h ${runtime % 60}min"
       Text(
@@ -309,7 +315,7 @@ fun DetailSection(
 @Preview(device = Devices.PIXEL_4, showSystemUi = true)
 @Composable
 fun MovieDetailsPreview() {
-  ExploringMoviesTheme() {
+  ExploringMoviesTheme {
     MovieDetails(joker) {}
   }
 }

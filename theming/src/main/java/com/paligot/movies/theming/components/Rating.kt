@@ -1,4 +1,4 @@
-package com.paligot.movies.ui.components
+package com.paligot.movies.theming.components
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
@@ -13,8 +13,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.layout.WithConstraints
-import androidx.compose.ui.platform.AmbientDensity
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -28,12 +27,12 @@ fun Rating(
   percentage: Int,
   modifier: Modifier = Modifier
 ) {
-  WithConstraints {
-    val boxWidth = with(AmbientDensity.current) { constraints.maxWidth.toDp() }
-    val boxHeight = with(AmbientDensity.current) { constraints.maxHeight.toDp() }
+  BoxWithConstraints {
+    val boxWidth = with(LocalDensity.current) { constraints.maxWidth.toDp() }
+    val boxHeight = with(LocalDensity.current) { constraints.maxHeight.toDp() }
     val largestSize = if (boxWidth.value > boxHeight.value) boxHeight else boxWidth
     Surface(
-      modifier = modifier.preferredSize(largestSize),
+      modifier = modifier.size(largestSize),
       shape = CircleShape,
       color = greenDark
     ) {
@@ -67,7 +66,9 @@ fun Rating(
             style = stroke
           )
         }
-        Box(modifier = Modifier.fillMaxSize().wrapContentSize(align = Alignment.Center)) {
+        Box(modifier = Modifier
+          .fillMaxSize()
+          .wrapContentSize(align = Alignment.Center)) {
           val fontSize = 0.34f * largestSize.value
           Text(
             text = "$percentage",
@@ -83,17 +84,17 @@ fun Rating(
 @Preview(name = "Green")
 @Composable
 fun RatingGreenPreview() {
-  Rating(80, modifier = Modifier.preferredSize(100.dp))
+  Rating(80, modifier = Modifier.size(100.dp))
 }
 
 @Preview(name = "Orange")
 @Composable
 fun RatingOrangePreview() {
-  Rating(54, modifier = Modifier.preferredSize(80.dp))
+  Rating(54, modifier = Modifier.size(80.dp))
 }
 
 @Preview(name = "Red")
 @Composable
 fun RatingRedPreview() {
-  Rating(22, modifier = Modifier.preferredSize(50.dp))
+  Rating(22, modifier = Modifier.size(50.dp))
 }

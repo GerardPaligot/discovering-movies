@@ -8,8 +8,8 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.paligot.movies.data.Movie
 import com.paligot.movies.data.movies
 import com.paligot.movies.theming.ExploringMoviesTheme
@@ -28,7 +28,7 @@ fun MovieItem(
       modifier = Modifier
         .padding(top = 60.dp)
         .fillMaxWidth()
-        .preferredHeight((height - 30).dp)
+        .height((height - 30).dp)
         .clickable(onClick = { onClick(movie) }),
       shape = MaterialTheme.shapes.large,
       elevation = 5.dp
@@ -39,7 +39,8 @@ fun MovieItem(
           genres = movie.genres,
           releaseDate = movie.releaseDate,
           runtime = movie.runtime,
-          modifier = Modifier.padding(start = (posterWidth + 15).dp)
+          modifier = Modifier
+            .padding(start = (posterWidth + 15).dp)
             .align(alignment = Alignment.CenterStart)
         )
       }
@@ -67,7 +68,8 @@ fun MovieItemPreview() {
     Surface(modifier = Modifier.fillMaxSize()) {
       MovieItem(
         movie = movies[0],
-        modifier = Modifier.wrapContentSize(align = Alignment.Center)
+        modifier = Modifier
+          .wrapContentSize(align = Alignment.Center)
           .padding(start = 10.dp, end = 10.dp)
       ) {}
     }

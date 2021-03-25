@@ -2,7 +2,7 @@ package com.paligot.movies.ui.components
 
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.res.loadVectorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.paligot.movies.R
 import com.paligot.movies.theming.ExploringMoviesTheme
@@ -22,10 +22,8 @@ fun MovieScaffold(
         actions = {
           IconButton(onClick = switchDarkMode) {
             val imageId = if (isDarkModeActive) R.drawable.ic_sun else R.drawable.ic_moon
-            val image = loadVectorResource(id = imageId)
-            image.resource.resource?.let {
-              Icon(imageVector = it)
-            }
+            val image = painterResource(id = imageId)
+            Icon(painter = image, contentDescription = null)
           }
         }
       )
