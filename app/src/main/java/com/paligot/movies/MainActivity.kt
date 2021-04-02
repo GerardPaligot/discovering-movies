@@ -7,9 +7,8 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import com.paligot.movies.extensions.changeStatusBarColor
-import com.paligot.movies.extensions.legacy
-import com.paligot.movies.extensions.makeStatusBarTransparent
+import androidx.compose.ui.graphics.Color
+import com.google.accompanist.systemuicontroller.rememberAndroidSystemUiController
 import com.paligot.movies.theming.ExploringMoviesTheme
 import com.paligot.movies.ui.App
 
@@ -19,18 +18,21 @@ class MainActivity : AppCompatActivity() {
     setContent {
       val isSystemDark = isSystemInDarkTheme()
       val isDarkModeState = remember { mutableStateOf(isSystemDark) }
+      val controller = rememberAndroidSystemUiController()
       ExploringMoviesTheme(isDarkMode = isDarkModeState.value) {
-        val legacyPrimaryColor = MaterialTheme.colors.primary.legacy()
+        val primaryColor = MaterialTheme.colors.primary
+        controller.setStatusBarColor(primaryColor)
         App(
           homeScreenOpened = {
-            window.changeStatusBarColor(legacyPrimaryColor)
+            controller.setStatusBarColor(primaryColor)
+          },
+          movieListScreenOpened = {
+            controller.setStatusBarColor(primaryColor)
           },
           movieDetailScreenOpened = {
-            window.makeStatusBarTransparent()
+            controller.setSystemBarsColor(Color.Transparent)
           }
-        ) {
-          window.changeStatusBarColor(legacyPrimaryColor)
-        }
+        )
       }
     }
   }

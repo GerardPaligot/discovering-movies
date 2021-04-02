@@ -59,6 +59,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
     implementation 'com.google.accompanist:accompanist-coil:0.7.0'
+    implementation "com.google.accompanist:accompanist-systemuicontroller:0.7.0"
 
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-moshi:2.4.0'
