@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 fun Tag(
   text: String,
   modifier: Modifier = Modifier,
-  color: Color = Color.Gray
+  color: Color = MaterialTheme.colors.onSurface.copy(alpha = .5f)
 ) {
   Text(
     text,

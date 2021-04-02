@@ -1,6 +1,7 @@
-package com.paligot.movies.ui.components
+package com.paligot.movies.ui.screens
 
 import android.content.res.Configuration
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -16,12 +17,13 @@ import com.paligot.movies.data.Movie
 import com.paligot.movies.data.MovieViewModel
 import com.paligot.movies.data.movies
 import com.paligot.movies.theming.ExploringMoviesTheme
+import com.paligot.movies.ui.MovieSection
+import com.paligot.movies.ui.components.MovieItem
+import com.paligot.movies.ui.components.MovieScaffold
 
 @Composable
 fun MovieListViewModel(
   movieSection: MovieSection,
-  isDarkModeActive: Boolean,
-  switchDarkMode: () -> Unit = {},
   onClick: (movie: Movie) -> Unit
 ) {
   val viewModel: MovieViewModel = viewModel()
@@ -38,8 +40,6 @@ fun MovieListViewModel(
   MovieList(
     title = title,
     movies = movies.value,
-    isDarkModeActive = isDarkModeActive,
-    switchDarkMode = switchDarkMode,
     onClick = onClick
   )
 }
@@ -48,20 +48,14 @@ fun MovieListViewModel(
 fun MovieList(
   title: String,
   movies: List<Movie>,
-  isDarkModeActive: Boolean,
-  switchDarkMode: () -> Unit = {},
   onClick: (movie: Movie) -> Unit
 ) {
-  MovieScaffold(
-    title = title,
-    isDarkModeActive = isDarkModeActive,
-    switchDarkMode = switchDarkMode
-  ) {
-    LazyColumn {
+  MovieScaffold(title = title) {
+    LazyColumn(contentPadding = PaddingValues(start = 16.dp, end = 16.dp)) {
       items(movies) {
         MovieItem(
           movie = it,
-          modifier = Modifier.padding(start = 10.dp, top = 10.dp, end = 10.dp),
+          modifier = Modifier.padding(top = 8.dp),
           onClick = onClick
         )
       }
@@ -76,9 +70,7 @@ fun MovieListDarkPreview() {
     Surface(modifier = Modifier.fillMaxSize()) {
       MovieList(
         title = "Populars",
-        movies = movies,
-        isDarkModeActive = true,
-        switchDarkMode = {}
+        movies = movies
       ) {}
     }
   }
@@ -91,9 +83,7 @@ fun MovieListLightPreview() {
     Surface(modifier = Modifier.fillMaxSize()) {
       MovieList(
         title = "Populars",
-        movies = movies,
-        isDarkModeActive = false,
-        switchDarkMode = {}
+        movies = movies
       ) {}
     }
   }

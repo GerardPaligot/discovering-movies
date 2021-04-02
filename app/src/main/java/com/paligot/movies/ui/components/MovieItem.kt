@@ -22,42 +22,34 @@ fun MovieItem(
   onClick: (movie: Movie) -> Unit
 ) {
   val posterWidth = 130
-  val height = (posterWidth / 0.7f).roundToInt()
+  val height = (posterWidth / 0.65f).roundToInt()
   Box(modifier = modifier) {
     Surface(
       modifier = Modifier
-        .padding(top = 60.dp)
         .fillMaxWidth()
-        .height((height - 30).dp)
+        .padding(top = 60.dp)
+        .height((height - 60).dp)
         .clickable(onClick = { onClick(movie) }),
       shape = MaterialTheme.shapes.large,
       elevation = 5.dp
     ) {
-      Box(modifier = Modifier.fillMaxHeight()) {
-        MovieMetadata(
-          title = movie.title,
-          genres = movie.genres,
-          releaseDate = movie.releaseDate,
-          runtime = movie.runtime,
-          modifier = Modifier
-            .padding(start = (posterWidth + 15).dp)
-            .align(alignment = Alignment.CenterStart)
-        )
-      }
-    }
-    Box(
-      modifier = Modifier
-        .padding(start = 30.dp)
-        .width(posterWidth.dp)
-        .aspectRatio(0.7f)
-    ) {
-      PosterNoted(
-        posterUrl = movie.pictureUrl,
-        voteAverage = movie.percentage,
-        ratingSize = 50.dp,
-        ratingAlignment = Alignment.TopEnd
+      MovieMetadata(
+        title = movie.title,
+        genres = movie.genres,
+        releaseDate = movie.releaseDate,
+        runtime = movie.runtime,
+        modifier = Modifier
+          .padding(start = posterWidth.dp)
+          .wrapContentHeight(align = Alignment.CenterVertically)
       )
     }
+    PosterNoted(
+      posterUrl = movie.pictureUrl,
+      voteAverage = movie.percentage,
+      modifier = Modifier
+        .width(posterWidth.dp)
+        .padding(start = 16.dp)
+    )
   }
 }
 
@@ -65,13 +57,11 @@ fun MovieItem(
 @Composable
 fun MovieItemPreview() {
   ExploringMoviesTheme(isDarkMode = true) {
-    Surface(modifier = Modifier.fillMaxSize()) {
-      MovieItem(
-        movie = movies[0],
-        modifier = Modifier
-          .wrapContentSize(align = Alignment.Center)
-          .padding(start = 10.dp, end = 10.dp)
-      ) {}
-    }
+    MovieItem(
+      movie = movies[0],
+      modifier = Modifier
+        .wrapContentSize(align = Alignment.Center)
+        .padding(start = 10.dp, end = 10.dp)
+    ) {}
   }
 }

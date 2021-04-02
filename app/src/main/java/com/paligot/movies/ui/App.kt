@@ -1,4 +1,4 @@
-package com.paligot.movies.ui.components
+package com.paligot.movies.ui
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
@@ -9,6 +9,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavType
 import androidx.navigation.compose.*
 import com.paligot.movies.theming.ExploringMoviesTheme
+import com.paligot.movies.ui.screens.MovieDetailsViewModel
+import com.paligot.movies.ui.screens.MovieHomeViewModel
+import com.paligot.movies.ui.screens.MovieListViewModel
 
 enum class MovieSection {
   UPCOMING, POPULAR, TRENDING
@@ -16,11 +19,9 @@ enum class MovieSection {
 
 @Composable
 fun App(
-  isDarkModeActive: Boolean,
   homeScreenOpened: () -> Unit = {},
   movieDetailScreenOpened: () -> Unit = {},
-  movieListScreenOpened: () -> Unit = {},
-  switchDarkMode: () -> Unit
+  movieListScreenOpened: () -> Unit = {}
 ) {
   val navController = rememberNavController()
   navController.addOnDestinationChangedListener { _, _, arguments ->
@@ -35,13 +36,10 @@ fun App(
     NavHost(navController, startDestination = "movies") {
       composable("movies") {
         MovieHomeViewModel(
-          isDarkModeActive = isDarkModeActive,
           onViewAllClick = {
             navController.navigate("sections/$it")
-          },
-          onClick = { navController.navigate("movies/${it.id}") },
-          switchDarkMode = switchDarkMode
-        )
+          }
+        ) { navController.navigate("movies/${it.id}") }
       }
       composable(
         route = "sections/{sectionId}",
@@ -50,9 +48,7 @@ fun App(
         })
       ) {
         MovieListViewModel(
-          movieSection = it.arguments?.get("sectionId")!! as MovieSection,
-          isDarkModeActive = isDarkModeActive,
-          switchDarkMode = switchDarkMode
+          movieSection = it.arguments?.get("sectionId")!! as MovieSection
         ) {
           navController.navigate("movies/${it.id}")
         }
@@ -73,6 +69,6 @@ fun App(
 @Composable
 fun DefaultPreview() {
   ExploringMoviesTheme {
-    App(isDarkModeActive = false) {}
+    App()
   }
 }

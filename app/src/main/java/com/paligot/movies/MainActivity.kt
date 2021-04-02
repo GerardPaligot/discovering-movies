@@ -11,7 +11,7 @@ import com.paligot.movies.extensions.changeStatusBarColor
 import com.paligot.movies.extensions.legacy
 import com.paligot.movies.extensions.makeStatusBarTransparent
 import com.paligot.movies.theming.ExploringMoviesTheme
-import com.paligot.movies.ui.components.App
+import com.paligot.movies.ui.App
 
 class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,20 +22,15 @@ class MainActivity : AppCompatActivity() {
       ExploringMoviesTheme(isDarkMode = isDarkModeState.value) {
         val legacyPrimaryColor = MaterialTheme.colors.primary.legacy()
         App(
-          isDarkModeActive = isDarkModeState.value,
           homeScreenOpened = {
-            window.changeStatusBarColor(legacyPrimaryColor)
-          },
-          movieListScreenOpened = {
             window.changeStatusBarColor(legacyPrimaryColor)
           },
           movieDetailScreenOpened = {
             window.makeStatusBarTransparent()
-          },
-          switchDarkMode = {
-            isDarkModeState.value = !isDarkModeState.value
           }
-        )
+        ) {
+          window.changeStatusBarColor(legacyPrimaryColor)
+        }
       }
     }
   }
