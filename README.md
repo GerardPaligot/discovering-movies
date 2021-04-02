@@ -9,7 +9,7 @@
 
 ## Required
 
-Android Studio 4.1 minimum with Compose compatibility
+Android Studio Arctic Fox 2020.3.1 minimum with Compose compatibility
 
 ## Install
 
