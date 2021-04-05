@@ -1,4 +1,4 @@
-package com.paligot.movies.ui.components
+package com.paligot.movies.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*

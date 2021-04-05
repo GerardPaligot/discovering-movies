@@ -1,4 +1,4 @@
-package com.paligot.movies.ui.components
+package com.paligot.movies.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -19,7 +19,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.coil.CoilImage
-import com.paligot.movies.data.joker
 import com.paligot.movies.theming.ExploringMoviesTheme
 import com.paligot.movies.theming.actorGradient
 
@@ -66,8 +65,8 @@ fun ActorItem(
 fun ActorItemPreview() {
   ExploringMoviesTheme() {
     ActorItem(
-      joker.actors[0].name,
-      joker.actors[0].profilePath,
+      name = "Jim Carrey",
+      pictureUrl = "",
       modifier = Modifier
         .padding(5.dp)
         .width(100.dp)

@@ -18,8 +18,8 @@ import com.paligot.movies.data.MovieViewModel
 import com.paligot.movies.data.movies
 import com.paligot.movies.theming.ExploringMoviesTheme
 import com.paligot.movies.ui.MovieSection
-import com.paligot.movies.ui.components.MovieItem
-import com.paligot.movies.ui.components.MovieScaffold
+import com.paligot.movies.components.MovieItem
+import com.paligot.movies.components.MovieScaffold
 
 @Composable
 fun MovieListViewModel(
@@ -54,9 +54,16 @@ fun MovieList(
     LazyColumn(contentPadding = PaddingValues(start = 16.dp, end = 16.dp)) {
       items(movies) {
         MovieItem(
-          movie = it,
+          title = it.title,
+          pictureUrl = it.pictureUrl,
+          rating = it.percentage,
+          genres = it.genres,
+          releaseDate = it.releaseDate,
+          runtime = it.runtime,
           modifier = Modifier.padding(top = 8.dp),
-          onClick = onClick
+          onClick = {
+            onClick(it)
+          }
         )
       }
     }

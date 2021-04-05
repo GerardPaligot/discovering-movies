@@ -17,15 +17,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.paligot.movies.data.Movie
 import com.paligot.movies.data.MovieViewModel
 import com.paligot.movies.data.movies
 import com.paligot.movies.theming.ExploringMoviesTheme
 import com.paligot.movies.ui.MovieSection
-import com.paligot.movies.ui.components.MovieScaffold
-import com.paligot.movies.ui.components.Poster
+import com.paligot.movies.components.MovieScaffold
+import com.paligot.movies.components.Poster
 
 @Composable
 fun MovieHomeViewModel(

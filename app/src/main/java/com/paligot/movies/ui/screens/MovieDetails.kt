@@ -22,15 +22,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.accompanist.coil.CoilImage
+import com.paligot.movies.components.ActorItem
 import com.paligot.movies.data.Movie
 import com.paligot.movies.data.MovieDetail
 import com.paligot.movies.data.MovieViewModel
 import com.paligot.movies.data.joker
 import com.paligot.movies.theming.ExploringMoviesTheme
-import com.paligot.movies.ui.components.ActorItem
-import com.paligot.movies.ui.components.MovieMetadata
-import com.paligot.movies.ui.components.Poster
-import com.paligot.movies.ui.components.PosterNoted
+import com.paligot.movies.components.MovieMetadata
+import com.paligot.movies.components.Poster
+import com.paligot.movies.components.PosterNoted
 
 @Composable
 fun MovieDetailsViewModel(

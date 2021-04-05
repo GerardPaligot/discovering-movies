@@ -1,4 +1,4 @@
-package com.paligot.movies.ui.components
+package com.paligot.movies.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -9,7 +9,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.paligot.movies.data.joker
 import com.paligot.movies.extensions.formatDate
 import com.paligot.movies.theming.ExploringMoviesTheme
 import java.util.*
@@ -53,10 +52,10 @@ fun MovieMetadataPreview() {
   ExploringMoviesTheme(isDarkMode = true) {
     Surface(modifier = Modifier.fillMaxSize()) {
       MovieMetadata(
-        title = joker.title,
-        genres = joker.genres,
-        releaseDate = joker.releaseDate,
-        runtime = joker.runtime,
+        title = "The Mandalorian",
+        genres = arrayListOf("Crime", "Thriller", "Drama"),
+        releaseDate = "2019-10-02",
+        runtime = 120,
         modifier = Modifier
           .wrapContentWidth(align = Alignment.CenterHorizontally)
           .wrapContentHeight(align = Alignment.CenterVertically)

@@ -1,4 +1,4 @@
-package com.paligot.movies.ui.components
+package com.paligot.movies.components
 
 import android.content.res.Configuration
 import androidx.compose.foundation.clickable
@@ -10,16 +10,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.paligot.movies.data.Movie
-import com.paligot.movies.data.movies
 import com.paligot.movies.theming.ExploringMoviesTheme
 import kotlin.math.roundToInt
 
 @Composable
 fun MovieItem(
-  movie: Movie,
+  title: String,
+  pictureUrl: String,
+  rating: Int,
+  genres: List<String>,
+  releaseDate: String,
+  runtime: Int,
   modifier: Modifier = Modifier,
-  onClick: (movie: Movie) -> Unit
+  onClick: () -> Unit
 ) {
   val posterWidth = 130
   val height = (posterWidth / 0.65f).roundToInt()
@@ -29,23 +32,23 @@ fun MovieItem(
         .fillMaxWidth()
         .padding(top = 60.dp)
         .height((height - 60).dp)
-        .clickable(onClick = { onClick(movie) }),
+        .clickable(onClick = onClick),
       shape = MaterialTheme.shapes.large,
       elevation = 5.dp
     ) {
       MovieMetadata(
-        title = movie.title,
-        genres = movie.genres,
-        releaseDate = movie.releaseDate,
-        runtime = movie.runtime,
+        title = title,
+        genres = genres,
+        releaseDate = releaseDate,
+        runtime = runtime,
         modifier = Modifier
           .padding(start = posterWidth.dp)
           .wrapContentHeight(align = Alignment.CenterVertically)
       )
     }
     PosterNoted(
-      posterUrl = movie.pictureUrl,
-      voteAverage = movie.percentage,
+      posterUrl = pictureUrl,
+      voteAverage = rating,
       modifier = Modifier
         .width(posterWidth.dp)
         .padding(start = 16.dp)
@@ -58,7 +61,12 @@ fun MovieItem(
 fun MovieItemPreview() {
   ExploringMoviesTheme(isDarkMode = true) {
     MovieItem(
-      movie = movies[0],
+      title = "The Mandalorian",
+      pictureUrl = "",
+      rating = 87,
+      genres = arrayListOf("Crime", "Thriller", "Drama"),
+      releaseDate = "2019-10-02",
+      runtime = 120,
       modifier = Modifier
         .wrapContentSize(align = Alignment.Center)
         .padding(start = 10.dp, end = 10.dp)

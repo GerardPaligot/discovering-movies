@@ -1,4 +1,4 @@
-package com.paligot.movies.ui.components
+package com.paligot.movies.components
 
 import android.content.res.Configuration
 import androidx.compose.foundation.LocalIndication
@@ -16,7 +16,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.coil.CoilImage
-import com.paligot.movies.data.joker
 import com.paligot.movies.extensions.opposite
 import com.paligot.movies.extensions.paddingValues
 import com.paligot.movies.theming.ExploringMoviesTheme
@@ -80,7 +79,7 @@ fun PosterNoted(
 fun PosterPreview() {
   ExploringMoviesTheme(isDarkMode = true) {
     Poster(
-      pictureUrl = joker.poster
+      pictureUrl = ""
     )
   }
 }
@@ -90,8 +89,8 @@ fun PosterPreview() {
 fun PosterNotedPreview() {
   ExploringMoviesTheme(isDarkMode = true) {
     PosterNoted(
-      posterUrl = joker.poster,
-      voteAverage = joker.voteAverage,
+      posterUrl = "",
+      voteAverage = 79,
       ratingAlignment = Alignment.TopEnd
     )
   }
