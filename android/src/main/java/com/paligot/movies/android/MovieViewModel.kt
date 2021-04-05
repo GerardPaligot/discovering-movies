@@ -1,6 +1,9 @@
-package com.paligot.movies.data
+package com.paligot.movies.android
 
 import androidx.lifecycle.ViewModel
+import com.paligot.movies.data.Actor
+import com.paligot.movies.data.Movie
+import com.paligot.movies.data.MovieDetail
 import com.paligot.movies.data.network.Gender
 import com.paligot.movies.data.network.MovieItem
 import com.paligot.movies.data.network.TheMovieDbService
@@ -8,6 +11,8 @@ import kotlinx.coroutines.flow.flow
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+
+const val API_KEY = BuildConfig.THE_MOVIE_DB_API_KEY
 
 class MovieViewModel : ViewModel() {
   private val service: TheMovieDbService
@@ -22,26 +27,26 @@ class MovieViewModel : ViewModel() {
   }
 
   fun getPopulars() = flow {
-    val genders = service.getGenders()
-    val movies = service.getPopulars()
+    val genders = service.getGenders(API_KEY)
+    val movies = service.getPopulars(API_KEY)
     emit(movies.results.map { it.toMovie(genders.genres) })
   }
 
   fun getDailyTrending() = flow {
-    val genders = service.getGenders()
-    val movies = service.getDailyTrending()
+    val genders = service.getGenders(API_KEY)
+    val movies = service.getDailyTrending(API_KEY)
     emit(movies.results.map { it.toMovie(genders.genres) })
   }
 
   fun getUpComing() = flow {
-    val genders = service.getGenders()
-    val movies = service.getUpComing()
+    val genders = service.getGenders(API_KEY)
+    val movies = service.getUpComing(API_KEY)
     emit(movies.results.map { it.toMovie(genders.genres) })
   }
 
   fun getMovieDetail(movieId: Int) = flow {
-    val movie = service.getDetailById(movieId)
-    val genders = service.getGenders()
+    val movie = service.getDetailById(movieId, API_KEY)
+    val genders = service.getGenders(API_KEY)
     emit(MovieDetail(
       id = movie.id,
       title = movie.title,
@@ -52,15 +57,15 @@ class MovieViewModel : ViewModel() {
       genres = movie.genres.map { it.name },
       releaseDate = movie.releaseDate,
       runtime = movie.runtime,
-      actors = service.getCreditById(movieId).cast.map {
+      actors = service.getCreditById(movieId, API_KEY).cast.map {
         Actor(
           it.name,
           it.character,
           "https://image.tmdb.org/t/p/w185${it.profile}"
         )
       },
-      recommendations = service.getRecommendationsById(movieId).results.map { it.toMovie(genders.genres) },
-      similar = service.getSimilarById(movieId).results.map { it.toMovie(genders.genres) }
+      recommendations = service.getRecommendationsById(movieId, API_KEY).results.map { it.toMovie(genders.genres) },
+      similar = service.getSimilarById(movieId, API_KEY).results.map { it.toMovie(genders.genres) }
     ))
   }
 }

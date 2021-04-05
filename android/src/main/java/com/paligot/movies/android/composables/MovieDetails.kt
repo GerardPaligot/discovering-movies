@@ -1,4 +1,4 @@
-package com.paligot.movies.ui.screens
+package com.paligot.movies.android.composables
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -12,7 +12,6 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -20,29 +19,16 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.accompanist.coil.CoilImage
 import com.paligot.movies.components.ActorItem
-import com.paligot.movies.data.Movie
-import com.paligot.movies.data.MovieDetail
-import com.paligot.movies.data.MovieViewModel
-import com.paligot.movies.data.joker
-import com.paligot.movies.theming.ExploringMoviesTheme
 import com.paligot.movies.components.MovieMetadata
 import com.paligot.movies.components.Poster
 import com.paligot.movies.components.PosterNoted
+import com.paligot.movies.data.Movie
+import com.paligot.movies.data.MovieDetail
+import com.paligot.movies.data.joker
+import com.paligot.movies.theming.ExploringMoviesTheme
 
-@Composable
-fun MovieDetailsViewModel(
-  movieId: Int,
-  onClick: (movie: Movie) -> Unit
-) {
-  val viewModel: MovieViewModel = viewModel()
-  val movie = viewModel.getMovieDetail(movieId).collectAsState(initial = null)
-  movie.value?.let {
-    MovieDetails(movie = it, onClick = onClick)
-  }
-}
 
 const val startVelocity = 2.5f
 const val topVelocity = 1.1f

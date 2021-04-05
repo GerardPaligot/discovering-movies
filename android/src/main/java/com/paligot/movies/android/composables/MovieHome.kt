@@ -1,6 +1,6 @@
-package com.paligot.movies.ui.screens
+package com.paligot.movies.android.composables
 
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import android.content.res.Configuration
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -12,37 +12,17 @@ import androidx.compose.material.Text
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.paligot.movies.data.Movie
-import com.paligot.movies.data.MovieViewModel
-import com.paligot.movies.data.movies
-import com.paligot.movies.theming.ExploringMoviesTheme
-import com.paligot.movies.ui.MovieSection
 import com.paligot.movies.components.MovieScaffold
 import com.paligot.movies.components.Poster
+import com.paligot.movies.data.Movie
+import com.paligot.movies.data.MovieSection
+import com.paligot.movies.data.movies
+import com.paligot.movies.theming.ExploringMoviesTheme
 
-@Composable
-fun MovieHomeViewModel(
-  onViewAllClick: (movieSection: MovieSection) -> Unit = {},
-  onClick: (movie: Movie) -> Unit
-) {
-  val viewModel: MovieViewModel = viewModel()
-  val upComing = viewModel.getUpComing().collectAsState(initial = emptyList())
-  val populars = viewModel.getPopulars().collectAsState(initial = emptyList())
-  val trending = viewModel.getDailyTrending().collectAsState(initial = emptyList())
-  MovieHome(
-    upComing = upComing.value,
-    populars = populars.value,
-    trending = trending.value,
-    onViewAllClick = onViewAllClick,
-    onClick = onClick
-  )
-}
 
 @Composable
 fun MovieHome(
@@ -128,7 +108,7 @@ fun HomeSection(
   }
 }
 
-@Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun MovieHomePreview() {
   ExploringMoviesTheme(isDarkMode = true) {

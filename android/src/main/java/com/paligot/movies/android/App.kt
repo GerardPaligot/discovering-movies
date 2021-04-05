@@ -1,4 +1,4 @@
-package com.paligot.movies.ui
+package com.paligot.movies.android
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
@@ -8,14 +8,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavType
 import androidx.navigation.compose.*
+import com.paligot.movies.data.MovieSection
 import com.paligot.movies.theming.ExploringMoviesTheme
-import com.paligot.movies.ui.screens.MovieDetailsViewModel
-import com.paligot.movies.ui.screens.MovieHomeViewModel
-import com.paligot.movies.ui.screens.MovieListViewModel
-
-enum class MovieSection {
-  UPCOMING, POPULAR, TRENDING
-}
+import com.paligot.movies.android.screens.MovieDetailsViewModel
+import com.paligot.movies.android.screens.MovieHomeViewModel
+import com.paligot.movies.android.screens.MovieListViewModel
 
 @Composable
 fun App(

@@ -10,7 +10,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import com.google.accompanist.systemuicontroller.rememberAndroidSystemUiController
 import com.paligot.movies.theming.ExploringMoviesTheme
-import com.paligot.movies.ui.App
+import com.paligot.movies.android.App
 
 class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
