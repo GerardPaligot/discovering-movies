@@ -1,4 +1,4 @@
-package com.paligot.movies.data
+package com.paligot.movies.data.models
 
 data class Movie(
   val id: Int = 0,

@@ -5,8 +5,8 @@ import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.paligot.movies.android.MovieViewModel
 import com.paligot.movies.android.composables.MovieList
-import com.paligot.movies.data.Movie
-import com.paligot.movies.data.MovieSection
+import com.paligot.movies.data.models.Movie
+import com.paligot.movies.data.models.MovieSection
 
 @Composable
 fun MovieListViewModel(

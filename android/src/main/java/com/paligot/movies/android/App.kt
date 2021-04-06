@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavType
 import androidx.navigation.compose.*
-import com.paligot.movies.data.MovieSection
+import com.paligot.movies.data.models.MovieSection
 import com.paligot.movies.theming.ExploringMoviesTheme
 import com.paligot.movies.android.screens.MovieDetailsViewModel
 import com.paligot.movies.android.screens.MovieHomeViewModel

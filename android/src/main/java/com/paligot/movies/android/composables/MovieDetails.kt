@@ -24,8 +24,8 @@ import com.paligot.movies.components.ActorItem
 import com.paligot.movies.components.MovieMetadata
 import com.paligot.movies.components.Poster
 import com.paligot.movies.components.PosterNoted
-import com.paligot.movies.data.Movie
-import com.paligot.movies.data.MovieDetail
+import com.paligot.movies.data.models.Movie
+import com.paligot.movies.data.models.MovieDetail
 import com.paligot.movies.data.joker
 import com.paligot.movies.theming.ExploringMoviesTheme
 

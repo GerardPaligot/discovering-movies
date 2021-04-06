@@ -13,7 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.paligot.movies.components.MovieItem
 import com.paligot.movies.components.MovieScaffold
-import com.paligot.movies.data.Movie
+import com.paligot.movies.data.models.Movie
 import com.paligot.movies.data.movies
 import com.paligot.movies.theming.ExploringMoviesTheme
 

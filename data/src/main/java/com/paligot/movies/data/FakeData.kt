@@ -1,5 +1,9 @@
 package com.paligot.movies.data
 
+import com.paligot.movies.data.models.Actor
+import com.paligot.movies.data.models.Movie
+import com.paligot.movies.data.models.MovieDetail
+
 val movies = arrayListOf(
   Movie(
     title = "The Mandalorian",
