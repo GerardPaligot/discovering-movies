@@ -1,6 +1,7 @@
 package com.paligot.movies.android
 
 import androidx.lifecycle.ViewModel
+import com.paligot.movies.BuildConfig
 import com.paligot.movies.data.MovieRepository
 import kotlinx.coroutines.flow.flow
 

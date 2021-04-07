@@ -1,0 +1,47 @@
+plugins {
+  id("com.android.application")
+  kotlin("android")
+  id("org.jetbrains.compose")
+}
+
+android {
+  compileSdkVersion(AndroidSdk.apiLevel)
+
+  defaultConfig {
+    minSdkVersion(AndroidSdk.minSdk)
+    targetSdkVersion(AndroidSdk.target)
+
+    buildConfigField(
+      "String",
+      "THE_MOVIE_DB_API_KEY",
+      "\"${project.properties["THE_MOVIE_DB_API_KEY"]}\""
+    )
+  }
+
+  compileOptions {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+  }
+}
+
+dependencies {
+  api(project(":components"))
+  api(project(":data"))
+
+  implementation(Dependencies.kotlin)
+  implementation(Dependencies.AndroidX.core)
+  implementation(Dependencies.AndroidX.appcompat)
+  implementation(Dependencies.AndroidX.material)
+
+  implementation(compose.ui)
+  implementation(compose.material)
+  implementation(Dependencies.Compose.activity)
+  implementation(Dependencies.Compose.navigation)
+  implementation(Dependencies.Compose.uiTooling)
+
+  implementation(Dependencies.Accompanist.uiController)
+  implementation(Dependencies.Accompanist.coil)
+
+  implementation(Dependencies.AndroidX.viewModel)
+  implementation(Dependencies.AndroidX.lifecycle)
+}

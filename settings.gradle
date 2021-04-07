@@ -1,7 +1,0 @@
-rootProject.name = "discovering-movies"
-include ':app'
-include ':theming'
-include ':extensions'
-include ':components'
-include ':android'
-include ':data'
