@@ -56,5 +56,10 @@ kotlin {
         implementation(Dependencies.Accompanist.coil)
       }
     }
+    named("desktopMain") {
+      dependencies {
+        implementation(Dependencies.okhttp)
+      }
+    }
   }
 }
