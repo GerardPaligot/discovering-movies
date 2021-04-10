@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     repositories {
-        mavenLocal()
+        mavenCentral()
         google()
         jcenter()
         maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
@@ -15,7 +15,7 @@ buildscript {
 
 allprojects {
     repositories {
-        mavenLocal()
+        mavenCentral()
         google()
         jcenter()
         maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")

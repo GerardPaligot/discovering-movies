@@ -1,6 +1,5 @@
 plugins {
-  id("java-library")
-  id("kotlin")
+  kotlin("jvm")
 }
 
 java {
@@ -12,4 +11,5 @@ dependencies {
   implementation(Dependencies.retrofit)
   implementation(Dependencies.moshi)
   implementation(Dependencies.okhttp)
+  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3")
 }

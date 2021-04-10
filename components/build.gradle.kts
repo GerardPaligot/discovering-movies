@@ -58,6 +58,7 @@ kotlin {
     }
     named("desktopMain") {
       dependencies {
+        implementation(project(":data"))
         implementation(Dependencies.okhttp)
       }
     }

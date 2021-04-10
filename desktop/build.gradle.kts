@@ -21,5 +21,6 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>() {
 compose.desktop {
   application {
     mainClass = "com.paligot.movies.desktop.MainKt"
+    this.args.add(project.properties["THE_MOVIE_DB_API_KEY"] as String)
   }
 }

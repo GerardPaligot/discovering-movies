@@ -52,3 +52,32 @@ fun MovieItem(
     )
   }
 }
+
+@Composable
+fun MovieNotedItem(
+  title: String,
+  pictureUrl: String,
+  rating: Int,
+  releaseDate: String,
+  runtime: Int,
+  modifier: Modifier = Modifier,
+  onClick: () -> Unit
+) {
+  Column(
+    modifier = modifier,
+    horizontalAlignment = Alignment.Start
+  ) {
+    PosterNoted(
+      posterUrl = pictureUrl,
+      voteAverage = rating,
+      modifier = Modifier.width(150.dp).clickable(onClick = onClick)
+    )
+    MovieMetadata(
+      title = title,
+      genres = emptyList(),
+      releaseDate = releaseDate,
+      runtime = runtime,
+      modifier = Modifier.width(150.dp).padding(top = 8.dp)
+    )
+  }
+}
