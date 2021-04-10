@@ -55,7 +55,7 @@ fun Rating(
         drawArc(
           color = color,
           startAngle = -90f,
-          sweepAngle = 360f - sweepAngle,
+          sweepAngle = sweepAngle,
           useCenter = false,
           style = Stroke(strokeWidth, cap = StrokeCap.Round),
           topLeft = topLeft,
