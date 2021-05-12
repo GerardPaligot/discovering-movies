@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="theming-desktop">
-    <output-path>$PROJECT_DIR$/theming/build/libs</output-path>
-    <root id="archive" name="theming-desktop.jar">
-      <element id="module-output" name="discovering-movies.theming.desktopMain" />
-    </root>
-  </artifact>
-</component>
