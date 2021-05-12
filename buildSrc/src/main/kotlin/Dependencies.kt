@@ -2,6 +2,7 @@ object AndroidSdk {
   const val apiLevel = 30
   const val minSdk = 21
   const val target = apiLevel
+  const val buildTools = "30.0.3"
 }
 
 object Versions {

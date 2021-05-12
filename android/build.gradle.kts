@@ -5,11 +5,12 @@ plugins {
 }
 
 android {
-  compileSdkVersion(AndroidSdk.apiLevel)
+  compileSdk = AndroidSdk.apiLevel
 
   defaultConfig {
-    minSdkVersion(AndroidSdk.minSdk)
-    targetSdkVersion(AndroidSdk.target)
+    minSdk = AndroidSdk.minSdk
+    targetSdk = AndroidSdk.target
+    buildToolsVersion = AndroidSdk.buildTools
 
     buildConfigField(
       "String",
