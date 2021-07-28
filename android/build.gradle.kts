@@ -44,5 +44,4 @@ dependencies {
   implementation(Dependencies.Accompanist.coil)
 
   implementation(Dependencies.AndroidX.viewModel)
-  implementation(Dependencies.AndroidX.lifecycle)
 }

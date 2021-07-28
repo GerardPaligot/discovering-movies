@@ -1,9 +1,11 @@
 package com.paligot.movies.android
 
+import android.util.Log
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavType
@@ -21,12 +23,14 @@ fun App(
   movieListScreenOpened: () -> Unit = {}
 ) {
   val navController = rememberNavController()
-  navController.addOnDestinationChangedListener { _, _, arguments ->
-    when (arguments?.get("android-support-nav:controller:route")) {
-      "movies" -> homeScreenOpened()
-      "movies/{movieId}" -> movieDetailScreenOpened()
-      "sections/{sectionId}" -> movieListScreenOpened()
-      else -> TODO()
+  LaunchedEffect(Unit) {
+    navController.addOnDestinationChangedListener { _, dest, arguments ->
+      when (dest.route) {
+        "movies" -> homeScreenOpened()
+        "movies/{movieId}" -> movieDetailScreenOpened()
+        "sections/{sectionId}" -> movieListScreenOpened()
+        else -> TODO()
+      }
     }
   }
   Surface(color = MaterialTheme.colors.background, modifier = Modifier.fillMaxSize()) {

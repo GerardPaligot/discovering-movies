@@ -1,15 +1,15 @@
 object AndroidSdk {
   const val apiLevel = 30
-  const val minSdk = 21
+  const val minSdk = 24
   const val target = apiLevel
   const val buildTools = "30.0.3"
 }
 
 object Versions {
-  const val kotlin = "1.4.32"
-  const val compose = "1.0.0-beta03"
-  const val jbCompose = "0.4.0-build179"
-  const val accompanist = "0.7.0"
+  const val kotlin = "1.5.10"
+  const val compose = "1.0.0-beta09"
+  const val jbCompose = "0.5.0-build225"
+  const val accompanist = "0.12.0"
 
   const val datetime = "0.1.1"
 
@@ -28,16 +28,15 @@ object Dependencies {
 
   object Compose {
     const val uiTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
-    const val activity = "androidx.activity:activity-compose:1.3.0-alpha05"
-    const val navigation = "androidx.navigation:navigation-compose:1.0.0-alpha09"
+    const val activity = "androidx.activity:activity-compose:1.3.0-beta2"
+    const val navigation = "androidx.navigation:navigation-compose:2.4.0-alpha03"
   }
 
   object AndroidX {
     const val core = "androidx.core:core-ktx:1.3.2"
     const val appcompat = "androidx.appcompat:appcompat:1.2.0"
     const val material = "com.google.android.material:material:1.3.0"
-    const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0-alpha01"
-    const val lifecycle = "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07"
   }
 
   object Accompanist {

@@ -8,7 +8,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
-import com.google.accompanist.systemuicontroller.rememberAndroidSystemUiController
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.paligot.movies.theming.ExploringMoviesTheme
 
 class MainActivity : AppCompatActivity() {
@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     setContent {
       val isSystemDark = isSystemInDarkTheme()
       val isDarkModeState = remember { mutableStateOf(isSystemDark) }
-      val controller = rememberAndroidSystemUiController()
+      val controller = rememberSystemUiController()
       ExploringMoviesTheme(isDarkMode = isDarkModeState.value) {
         val primaryColor = MaterialTheme.colors.primary
         controller.setStatusBarColor(primaryColor)

@@ -1,9 +1,10 @@
 package com.paligot.movies.components
 
+import androidx.compose.foundation.Image
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import com.google.accompanist.coil.CoilImage
+import com.google.accompanist.coil.rememberCoilPainter
 
 @Composable
 actual fun RemoteImage(
@@ -12,8 +13,8 @@ actual fun RemoteImage(
   modifier: Modifier,
   contentScale: ContentScale
 ) {
-  CoilImage(
-    data = url,
+  Image(
+    painter = rememberCoilPainter(request = url),
     modifier = modifier,
     contentDescription = contentDescription,
     contentScale = ContentScale.Crop,
