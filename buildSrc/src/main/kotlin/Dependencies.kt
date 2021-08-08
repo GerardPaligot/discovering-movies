@@ -6,9 +6,9 @@ object AndroidSdk {
 }
 
 object Versions {
-  const val kotlin = "1.5.10"
-  const val compose = "1.0.0-beta09"
-  const val jbCompose = "0.5.0-build225"
+  const val kotlin = "1.5.21"
+  const val compose = "1.0.0"
+  const val jbCompose = "1.0.0-alpha1"
   const val accompanist = "0.12.0"
 
   const val datetime = "0.1.1"
@@ -27,9 +27,8 @@ object Dependencies {
   const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
 
   object Compose {
-    const val uiTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
-    const val activity = "androidx.activity:activity-compose:1.3.0-beta2"
-    const val navigation = "androidx.navigation:navigation-compose:2.4.0-alpha03"
+    const val activity = "androidx.activity:activity-compose:1.3.1"
+    const val navigation = "androidx.navigation:navigation-compose:2.4.0-alpha06"
   }
 
   object AndroidX {

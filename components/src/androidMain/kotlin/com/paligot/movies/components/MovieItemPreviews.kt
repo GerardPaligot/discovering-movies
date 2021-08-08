@@ -13,17 +13,17 @@ import com.paligot.movies.theming.ExploringMoviesTheme
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun MovieItemPreview() {
-  ExploringMoviesTheme(isDarkMode = true) {
-    MovieItem(
-      title = "The Mandalorian",
-      pictureUrl = "",
-      rating = 87,
-      genres = arrayListOf("Crime", "Thriller", "Drama"),
-      releaseDate = "2019-10-02",
-      runtime = 120,
-      modifier = Modifier
-        .wrapContentSize(align = Alignment.Center)
-        .padding(start = 10.dp, end = 10.dp)
-    ) {}
-  }
+    ExploringMoviesTheme(isDarkMode = true) {
+        MovieItem(
+                title = "The Mandalorian",
+                pictureUrl = "",
+                rating = 87,
+                genres = arrayListOf("Crime", "Thriller", "Drama"),
+                releaseDate = "2019-10-02",
+                runtime = 120,
+                modifier = Modifier
+                        .wrapContentSize(align = Alignment.Center)
+                        .padding(start = 10.dp, end = 10.dp)
+        ) {}
+    }
 }

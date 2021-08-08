@@ -9,21 +9,21 @@ import com.paligot.movies.theming.ExploringMoviesTheme
 @Preview
 @Composable
 fun PosterPreview() {
-  ExploringMoviesTheme(isDarkMode = true) {
-    Poster(
-      pictureUrl = ""
-    )
-  }
+    ExploringMoviesTheme(isDarkMode = true) {
+        Poster(
+                pictureUrl = ""
+        )
+    }
 }
 
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun PosterNotedPreview() {
-  ExploringMoviesTheme(isDarkMode = true) {
-    PosterNoted(
-      posterUrl = "",
-      voteAverage = 79,
-      ratingAlignment = Alignment.TopEnd
-    )
-  }
+    ExploringMoviesTheme(isDarkMode = true) {
+        PosterNoted(
+                posterUrl = "",
+                voteAverage = 79,
+                ratingAlignment = Alignment.TopEnd
+        )
+    }
 }

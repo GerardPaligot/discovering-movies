@@ -53,14 +53,15 @@ kotlin {
     }
     named("androidMain") {
       dependencies {
-        implementation(Dependencies.Compose.uiTooling)
         implementation(Dependencies.Accompanist.coil)
+        implementation(compose.preview)
       }
     }
     named("desktopMain") {
       dependencies {
         implementation(project(":data"))
         implementation(Dependencies.okhttp)
+        implementation(compose.preview)
       }
     }
   }

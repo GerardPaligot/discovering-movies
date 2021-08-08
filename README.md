@@ -9,7 +9,9 @@
 
 ## Required
 
-Android Studio Arctic Fox 2020.3.1 minimum with Compose compatibility
+* Android Studio Bumblebee 2021.1.1 minimum with Compose compatibility
+* [Compose Multiplatform IDE Support](https://plugins.jetbrains.com/plugin/16541-compose-multiplatform-ide-support)
+if you want to start desktop previews in components module
 
 ## Install
 

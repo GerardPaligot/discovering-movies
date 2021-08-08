@@ -7,8 +7,8 @@ import com.paligot.movies.theming.ExploringMoviesTheme
 @Preview
 @Composable
 fun MovieScaffoldPreview() {
-  ExploringMoviesTheme {
-    MovieScaffold {
+    ExploringMoviesTheme {
+        MovieScaffold {
+        }
     }
-  }
 }

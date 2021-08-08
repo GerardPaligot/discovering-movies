@@ -1,25 +1,25 @@
 package com.paligot.movies.components
 
+import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
-@Preview(name = "Green")
+@Preview
 @Composable
 fun RatingGreenPreview() {
-  Rating(80, modifier = Modifier.size(100.dp))
+    Rating(80, modifier = Modifier.size(100.dp))
 }
 
-@Preview(name = "Orange")
+@Preview
 @Composable
 fun RatingOrangePreview() {
-  Rating(54, modifier = Modifier.size(80.dp))
+    Rating(54, modifier = Modifier.size(80.dp))
 }
 
-@Preview(name = "Red")
+@Preview
 @Composable
 fun RatingRedPreview() {
-  Rating(22, modifier = Modifier.size(50.dp))
+    Rating(22, modifier = Modifier.size(50.dp))
 }

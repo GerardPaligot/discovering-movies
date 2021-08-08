@@ -1,3 +1,5 @@
+import org.jetbrains.compose.compose
+
 plugins {
   id("com.android.application")
   kotlin("android")
@@ -36,9 +38,9 @@ dependencies {
 
   implementation(compose.ui)
   implementation(compose.material)
+  implementation(compose.preview)
   implementation(Dependencies.Compose.activity)
   implementation(Dependencies.Compose.navigation)
-  implementation(Dependencies.Compose.uiTooling)
 
   implementation(Dependencies.Accompanist.uiController)
   implementation(Dependencies.Accompanist.coil)
