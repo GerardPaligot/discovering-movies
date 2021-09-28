@@ -1,12 +1,10 @@
-package com.paligot.movies.android.composables
+package com.paligot.movies.ui
 
-import android.content.res.Configuration
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.ripple.rememberRipple
@@ -14,14 +12,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.paligot.movies.components.MovieScaffold
 import com.paligot.movies.components.Poster
 import com.paligot.movies.data.models.Movie
 import com.paligot.movies.data.models.MovieSection
-import com.paligot.movies.data.movies
-import com.paligot.movies.theming.ExploringMoviesTheme
 
 
 @Composable
@@ -108,6 +103,7 @@ fun HomeSection(
   }
 }
 
+/*
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun MovieHomePreview() {
@@ -115,3 +111,4 @@ fun MovieHomePreview() {
     MovieHome(movies, movies, movies) {}
   }
 }
+ */

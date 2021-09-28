@@ -1,10 +1,12 @@
-package com.paligot.movies.android.composables
+package com.paligot.movies.ui
 
-import androidx.compose.foundation.*
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -13,15 +15,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.tooling.preview.Devices
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.coil.rememberCoilPainter
 import com.paligot.movies.components.*
 import com.paligot.movies.data.models.Movie
 import com.paligot.movies.data.models.MovieDetail
-import com.paligot.movies.data.joker
-import com.paligot.movies.theming.ExploringMoviesTheme
 
 
 const val startVelocity = 2.5f
@@ -47,13 +44,13 @@ fun MovieDetails(
     .coerceIn(0f, topPaddingPoster.value)
   val opacity = ((widthPosterSize.value * 2) - scrollState.value) / widthPosterSize.value
   Box(modifier = Modifier.background(color = MaterialTheme.colors.surface)) {
-    Image(
-      painter = rememberCoilPainter(request = movie.backdrop),
+    RemoteImage(
+      url = movie.backdrop,
+      contentDescription = null,
       modifier = Modifier
         .fillMaxWidth()
         .height(backdropHeight),
-      contentScale = ContentScale.FillHeight,
-      contentDescription = null
+      contentScale = ContentScale.FillHeight
     )
     Column(Modifier.verticalScroll(scrollState)) {
       Spacer(
@@ -183,6 +180,7 @@ private fun DetailSection(
   }
 }
 
+/*
 @Preview(device = Devices.PIXEL_4, showSystemUi = true)
 @Composable
 fun MovieDetailsPreview() {
@@ -190,3 +188,4 @@ fun MovieDetailsPreview() {
     MovieDetails(joker) {}
   }
 }
+ */

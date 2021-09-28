@@ -28,7 +28,7 @@ android {
 }
 
 dependencies {
-  api(project(":components"))
+  api(project(":android:android-ui"))
   api(project(":data"))
 
   implementation(Dependencies.kotlin)

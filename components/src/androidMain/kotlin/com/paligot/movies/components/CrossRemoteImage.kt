@@ -7,7 +7,7 @@ import androidx.compose.ui.layout.ContentScale
 import com.google.accompanist.coil.rememberCoilPainter
 
 @Composable
-actual fun RemoteImage(
+actual fun CrossRemoteImage(
   url: String,
   contentDescription: String?,
   modifier: Modifier,

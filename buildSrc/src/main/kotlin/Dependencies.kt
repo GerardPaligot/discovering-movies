@@ -8,7 +8,7 @@ object AndroidSdk {
 object Versions {
   const val kotlin = "1.5.21"
   const val compose = "1.0.0"
-  const val jbCompose = "1.0.0-alpha1"
+  const val jbCompose = "1.0.0-alpha3"
   const val accompanist = "0.12.0"
 
   const val datetime = "0.1.1"
