@@ -5,16 +5,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 
 @Composable
-fun RemoteImage(
+expect fun CrossRemoteImage(
   url: String,
   contentDescription: String?,
   modifier: Modifier = Modifier,
   contentScale: ContentScale = ContentScale.Fit
-) {
-  CrossRemoteImage(
-    url = url,
-    contentDescription = contentDescription,
-    modifier = modifier,
-    contentScale = contentScale
-  )
-}
+)

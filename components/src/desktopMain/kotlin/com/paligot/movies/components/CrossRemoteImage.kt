@@ -13,7 +13,7 @@ import androidx.compose.ui.layout.ContentScale
 import com.paligot.movies.data.network.ImageLoader
 
 @Composable
-actual fun RemoteImage(
+actual fun CrossRemoteImage(
   url: String,
   contentDescription: String?,
   modifier: Modifier,
