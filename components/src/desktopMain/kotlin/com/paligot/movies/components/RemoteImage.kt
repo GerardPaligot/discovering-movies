@@ -8,6 +8,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.graphics.toComposeImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import com.paligot.movies.data.network.ImageLoader
 
@@ -21,7 +22,7 @@ actual fun RemoteImage(
   val image = remember(url) { mutableStateOf<ImageBitmap?>(null) }
   LaunchedEffect(url) {
     ImageLoader.load(url)?.let {
-      image.value = org.jetbrains.skija.Image.makeFromEncoded(it).asImageBitmap()
+      image.value = org.jetbrains.skia.Image.makeFromEncoded(it).toComposeImageBitmap()
     }
   }
   if (image.value != null) {

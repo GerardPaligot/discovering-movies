@@ -23,7 +23,7 @@ fun App(
 ) {
   val navController = rememberNavController()
   LaunchedEffect(Unit) {
-    navController.addOnDestinationChangedListener { _, dest, arguments ->
+    navController.addOnDestinationChangedListener { _, dest, _ ->
       when (dest.route) {
         "movies" -> homeScreenOpened()
         "movies/{movieId}" -> movieDetailScreenOpened()
