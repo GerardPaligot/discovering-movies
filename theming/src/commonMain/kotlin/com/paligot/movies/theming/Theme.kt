@@ -1,5 +1,6 @@
 package com.paligot.movies.theming
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
@@ -31,16 +32,13 @@ private val DarkColorPalette = darkColors(
 )
 
 @Composable
-expect fun isSystemInDarkTheme(): Boolean
-
-@Composable
 fun ExploringMoviesTheme(
   isDarkMode: Boolean = isSystemInDarkTheme(),
   content: @Composable () -> Unit
 ) {
   MaterialTheme(
     colors = if (isDarkMode) DarkColorPalette else LightColorPalette,
-    typography = typography,
+    typography = Typographies.roboto,
     shapes = shapes,
     content = content
   )
