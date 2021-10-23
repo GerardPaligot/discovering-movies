@@ -7,69 +7,69 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 
 @Composable
-expect fun Font(res: String, weight: FontWeight, style: FontStyle): Font
+expect fun Font(fontName: String, weight: FontWeight, style: FontStyle): Font
 
 object Fonts {
     val roboto: FontFamily
         @Composable
         get() = FontFamily(
             Font(
-                "font/roboto_black.ttf",
+                "roboto_black",
                 FontWeight.Black,
                 FontStyle.Normal
             ),
             Font(
-                "font/roboto_black_italic.ttf",
+                "roboto_black_italic",
                 FontWeight.Black,
                 FontStyle.Italic
             ),
             Font(
-                "font/roboto_bold.ttf",
+                "roboto_bold",
                 FontWeight.Bold,
                 FontStyle.Normal
             ),
             Font(
-                "font/roboto_bold_italic.ttf",
+                "roboto_bold_italic",
                 FontWeight.Bold,
                 FontStyle.Italic
             ),
             Font(
-                "font/roboto_italic.ttf",
+                "roboto_italic",
                 FontWeight.Normal,
                 FontStyle.Italic
             ),
             Font(
-                "font/roboto_light.ttf",
+                "roboto_light",
                 FontWeight.Light,
                 FontStyle.Normal
             ),
             Font(
-                "font/roboto_light_italic.ttf",
+                "roboto_light_italic",
                 FontWeight.Light,
                 FontStyle.Italic
             ),
             Font(
-                "font/roboto_medium.ttf",
+                "roboto_medium",
                 FontWeight.Medium,
                 FontStyle.Normal
             ),
             Font(
-                "font/roboto_medium_italic.ttf",
+                "roboto_medium_italic",
                 FontWeight.Medium,
                 FontStyle.Italic
             ),
             Font(
-                "font/roboto_regular.ttf",
+                "roboto_regular",
                 FontWeight.Normal,
                 FontStyle.Normal
             ),
             Font(
-                "font/roboto_thin.ttf",
+                "roboto_thin",
                 FontWeight.Thin,
                 FontStyle.Normal
             ),
             Font(
-                "font/roboto_thin_italic.ttf",
+                "roboto_thin_italic",
                 FontWeight.Thin,
                 FontStyle.Italic
             ),
